@@ -117,6 +117,7 @@ cargar_fuente_memoria("C:/Users/rafay/OneDrive/Documents/Programación I/Program
 #inicializarlos
 pygame.init()
 
+
 root = tk.Tk()
 root.title(TITULO)
 rutaIcono = resolver_ruta("C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/imagenes/musicaa.png")
