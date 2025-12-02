@@ -6,10 +6,6 @@ from util.util_imagenes import leer_imagen
 import pygame
 import os
 
-#Python -m Pyinstaller --noconsole --one file --icon="C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/imagenes/musicaa.ico" --name="Spotrofy"
-# --add-data "imagenes;imagenes"
-# --add-data "fuentes;fuentes"
-# main.py
 
 ruta=""
 estado=""
@@ -93,11 +89,14 @@ def reproducir():
     else:
         messagebox.showwarning("Atención", "Primero debes cargar una canción")        
 
+#Se agrega el pause
+
 def pausar():
     pygame.mixer.music.pause()
     global estado
     estado = "pause"
 
+#Se detiene la cancion
 def detener():
     global estado
     estado = "stop"
@@ -108,12 +107,15 @@ def cambiar_volumen(valor):
     pygame.mixer.music.set_volume(float(valor)/100)
 
 def salir():
-    root.destroy
+    root.destroy()
 
 #Cargar las fuentes.
 cargar_fuente_memoria("C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/fuentes/Font Awesome 7 Brands-Regular-400.otf")
 cargar_fuente_memoria("C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/fuentes/Font Awesome 7 Free-Regular-400.otf")
 cargar_fuente_memoria("C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/fuentes/Font Awesome 7 Free-Solid-900.otf")
+
+#inicializarlos
+pygame.init()
 
 root = tk.Tk()
 root.title(TITULO)
@@ -124,14 +126,13 @@ root.iconphoto(False,icon)
 centrar_ventana(root,1024,700)
 
 barra_superior = tk.Frame(root,height=50,bg=COLOR_BARRA_SUPERIOR)
-barra_superior.pack(side=tk.TOP, fill="both")
+barra_superior.pack(side=tk.BOTTOM, fill="both")
 
 menu_lateral = tk.Frame(root,width=150,bg=COLOR_MENU_LATERAL)
 menu_lateral.pack(side=tk.LEFT, fill="both",expand=False)
 
 panel_principal = tk.Frame(root,width=150,bg=COLOR_PANEL_PRINCIPAL)
 panel_principal.pack(side=tk.RIGHT, fill="both",expand=True)
-
 
 fontawesome = font.Font(family="Font Awesome 7 Free",size=20)
 
@@ -172,9 +173,6 @@ imagen_perfil = leer_imagen(ruta_perfil, (100,100))
 label_perfil = tk.Label(menu_lateral,image=imagen_perfil, bg=COLOR_MENU_LATERAL)
 label_perfil.pack(side=tk.TOP, pady=30)
 
-ruta_principal = resolver_ruta("C:/Users/rafay/OneDrive/Documents/Programación I/Programacion1/Proyecto final/imagenes/potros.png")
-imagen_principal = leer_imagen(ruta_perfil, (100,100))
-label_principal = tk.Label()
 
 btn_inicio = tk.Button(menu_lateral, text="\ue1b0 Inicio", bg=COLOR_MENU_LATERAL, width=12, fg="#f2f2f2", bd=0, font="Pristina 24", command=mostrar_inicio)
 btn_inicio.pack(side=tk.TOP)
